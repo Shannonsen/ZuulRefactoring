@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Zuul;
 
 /**
  *
  * @author Shannon
  */
+package Zuul;
 public class Main {
 
     /**
@@ -16,6 +16,7 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        new Game().play();
     }
     
 }
