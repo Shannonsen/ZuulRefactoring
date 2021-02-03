@@ -20,18 +20,12 @@ public class Game
     private Parser parser;
     private Room currentRoom;
         
-    /**
-     * Create the game and initialise its internal map.
-     */
     public Game() 
     {
         createRooms();
         parser = new Parser();
     }
-
-    /**
-     * Create all the rooms and link their exits together.
-     */
+    
     private void createRooms()
     {
         Room outside, theatre, pub, lab, office;
@@ -50,18 +44,13 @@ public class Game
         lab.setExits(outside, office, null, null);
         office.setExits(null, null, null, lab);
 
-        currentRoom = outside;  // start game outside
+        currentRoom = outside;  
     }
 
-    /**
-     *  Main play routine.  Loops until end of play.
-     */
     public void play() 
     {            
         printWelcome();
 
-        // Enter the main command loop.  Here we repeatedly read commands and
-        // execute them until the game is over.
                 
         boolean finished = false;
         while (! finished) {
@@ -71,9 +60,6 @@ public class Game
         System.out.println("Thank you for playing.  Good bye.");
     }
 
-    /**
-     * Print out the opening message for the player.
-     */
     private void printWelcome()
     {
         System.out.println();
@@ -203,7 +189,7 @@ public class Game
             return false;
         }
         else {
-            return true;  // signal that we want to quit
+            return true;  
         }
     }
 }
