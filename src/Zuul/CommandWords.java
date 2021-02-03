@@ -17,9 +17,6 @@ public class CommandWords
         "go", "quit", "help"
     };
 
-    /**
-     * Constructor - initialise the command words.
-     */
     public CommandWords()
     {
         // nothing to do at the moment...
