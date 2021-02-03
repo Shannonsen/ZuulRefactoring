@@ -21,7 +21,7 @@ import java.util.StringTokenizer;
  */
 public class Parser 
 {
-    private CommandWords commands;  // holds all valid command words
+    private CommandWords commands;
     private Scanner reader;         // source of command input
 
     /**
@@ -33,25 +33,22 @@ public class Parser
         reader = new Scanner(System.in);
     }
 
-    /**
-     * @return The next command from the user.
-     */
     public Command getCommand() 
     {
-        String inputLine;   // will hold the full input line
+        String inputLine;   
         String word1 = null;
         String word2 = null;
 
-        System.out.print("> ");     // print prompt
+        System.out.print("> ");
 
         inputLine = reader.nextLine();
 
         // Find up to two words on the line.
         Scanner tokenizer = new Scanner(inputLine);
         if(tokenizer.hasNext()) {
-            word1 = tokenizer.next();      // get first word
+            word1 = tokenizer.next();
             if(tokenizer.hasNext()) {
-                word2 = tokenizer.next();      // get second word
+                word2 = tokenizer.next();
                 // note: we just ignore the rest of the input line.
             }
         }
