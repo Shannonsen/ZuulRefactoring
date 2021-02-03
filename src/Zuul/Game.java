@@ -104,9 +104,6 @@ public class Game
         return wantToQuit;
     }
 
-    // implementations of user commands:
-
-    
     private void printHelp() 
     {
         System.out.println("You are lost. You are alone. You wander");
@@ -125,7 +122,6 @@ public class Game
 
         String direction = command.getSecondWord();
 
-        // Try to leave current room.
         Room nextRoom = null;
         if(direction.equals("north")) {
             nextRoom = currentRoom.northExit;
