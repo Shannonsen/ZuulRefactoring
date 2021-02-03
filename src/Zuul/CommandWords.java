@@ -19,7 +19,6 @@ public class CommandWords
 
     public CommandWords()
     {
-        // nothing to do at the moment...
     }
 
     public boolean isCommand(String aString)
