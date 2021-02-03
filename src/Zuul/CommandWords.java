@@ -31,7 +31,6 @@ public class CommandWords
             if(validCommands[i].equals(aString))
                 return true;
         }
-        // if we get here, the string was not found in the commands
         return false;
     }
 }
