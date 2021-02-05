@@ -35,14 +35,12 @@ public class Parser
 
     public Command getCommand() 
     {
+        System.out.print("> ");
+        
         String inputLine;   
         String word1 = null;
         String word2 = null;
-
-        System.out.print("> ");
-
         inputLine = reader.nextLine();
-
         // Find up to two words on the line.
         Scanner tokenizer = new Scanner(inputLine);
         if(tokenizer.hasNext()) {
