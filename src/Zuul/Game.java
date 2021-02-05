@@ -50,9 +50,9 @@ public class Game
     public void play() 
     {            
         printWelcome();
-
-                
+  
         boolean finished = false;
+        
         while (!finished) {
             Command command = parser.getCommand();
             finished = processCommand(command);
@@ -86,14 +86,14 @@ public class Game
 
     private boolean processCommand(Command command) 
     {
-        boolean wantToQuit = false;
-
         if(command.isUnknown()) {
             System.out.println("I don't know what you mean...");
             return false;
         }
-
+        
+        boolean wantToQuit = false;
         String commandWord = command.getCommandWord();
+        
         if (commandWord.equals("help"))
             printHelp();
         else if (commandWord.equals("go"))
@@ -110,7 +110,7 @@ public class Game
         System.out.println("around at the university.");
         System.out.println();
         System.out.println("Your command words are:");
-        System.out.println("   go quit help");
+        System.out.println("go quit help");
     }
 
     private void goRoom(Command command) 
@@ -121,8 +121,8 @@ public class Game
         }
 
         String direction = command.getSecondWord();
-
         Room nextRoom = null;
+        
             if(direction.equals("north")) {
                 nextRoom = currentRoom.northExit;
             }
@@ -164,6 +164,7 @@ public class Game
      * whether we really quit the game.
      * @return true, if this command quits the game, false otherwise.
      */
+    
     private boolean quit(Command command) 
     {
         if(command.hasSecondWord()) {
