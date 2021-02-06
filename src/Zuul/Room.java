@@ -16,10 +16,10 @@ package Zuul;
 public class Room 
 {
     public String description;
-    public Room northExit;
-    public Room southExit;
-    public Room eastExit;
-    public Room westExit;
+    private Room northExit;
+    private Room southExit;
+    private Room eastExit;
+    private Room westExit;
 
     /**
      * Create a room described "description". Initially, it has
