@@ -38,18 +38,57 @@ public class Room
     public void setExits(Room north, Room east, Room south, Room west) 
     {
         if(north != null)
-            northExit = north;
+            setNorthExit(north);
         if(east != null)
-            eastExit = east;
+            setEastExit(east);
         if(south != null)
-            southExit = south;
+            setSouthExit(south);
         if(west != null)
-            westExit = west;
+            setWestExit(west);
     }
 
     public String getDescription()
     {
         return description;
     }
+
+    public Room getNorthExit() {
+        return northExit;
+    }
+
+    public Room getSouthExit() {
+        return southExit;
+    }
+
+    public Room getEastExit() {
+        return eastExit;
+    }
+
+    public Room getWestExit() {
+        return westExit;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setNorthExit(Room northExit) {
+        this.northExit = northExit;
+    }
+
+    public void setSouthExit(Room southExit) {
+        this.southExit = southExit;
+    }
+
+    public void setEastExit(Room eastExit) {
+        this.eastExit = eastExit;
+    }
+
+    public void setWestExit(Room westExit) {
+        this.westExit = westExit;
+    }
+    
+    
+    
 
 }
