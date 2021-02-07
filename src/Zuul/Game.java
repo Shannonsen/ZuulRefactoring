@@ -87,13 +87,15 @@ public class Game {
             return false;
         }
         String commandWord = command.getCommandWord();
-
+        
+        if (commandWord.equals("quit")) {
+            return quit(command);
+        }
         if (commandWord.equals("help")) {
             printHelp();
-        } else if (commandWord.equals("go")) {
+        }
+        if (commandWord.equals("go")) {
             goRoom(command);
-        } else if (commandWord.equals("quit")) {
-            return quit(command);
         }
         return false;
     }
