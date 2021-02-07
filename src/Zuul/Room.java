@@ -17,8 +17,9 @@ package Zuul;
 public class Room {
 
     public String description;
-    private Room[] roomExits;
-    private String[] locations = {"north ", "east ", "south ", "west "};
+    //private Room[] roomExits;
+    //private String[] locations = {"north ", "east ", "south ", "west "};
+    private RoomExit roomExit;
 
     /**
      * Create a room described "description". Initially, it has no exits.
@@ -32,25 +33,24 @@ public class Room {
      * Define the exits of this room. Every direction either leads to another
      * room or is null (no exit there).
      */
-    public void setExits(Room[] exits) {
-        this.roomExits = exits;
+    public void setExits(RoomExit exits) {
+        this.roomExit = exits;
     }
 
-    public Room[] getRoomExits() {
-        return roomExits;
+    public RoomExit getRoomExits() {
+        return roomExit;
     }
 
+    public Room getSpecificExit(int position){
+       return roomExit.getRoomExits()[position];
+    }
+    
     public String getDescription() {
         return description;
     }
 
-    public String getRoomExitsString() {
-        String exitsString = "";
-        for (int i = 0; i < roomExits.length; i++) {
-            if (roomExits[i] != null) {
-                exitsString += locations[i];
-            }
-        }
-        return exitsString;
+    public String getExits() {
+        return roomExit.getRoomExitsString();
     }
+
 }

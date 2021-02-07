@@ -38,11 +38,11 @@ public class Game {
         office = new Room("in the computing admin office");
 
         // initialise room exits
-        outside.setExits(new Room[]{null, theatre, lab, pub});
-        theatre.setExits(new Room[]{null, null, null, outside});
-        pub.setExits(new Room[]{null, outside, null, null});
-        lab.setExits(new Room[]{outside, office, null, null});
-        office.setExits(new Room[]{null, null, null, lab});
+        outside.setExits(new RoomExit(new Room[]{null, theatre, lab, pub}));
+        theatre.setExits(new RoomExit(new Room[]{null, null, null, outside}));
+        pub.setExits(new RoomExit(new Room []{null, outside, null, null}));
+        lab.setExits(new RoomExit(new Room[]{outside, office, null, null}));
+        office.setExits(new RoomExit(new Room[]{null, null, null, lab}));
 
         currentRoom = outside;
     }
@@ -67,7 +67,7 @@ public class Game {
         System.out.println();
         System.out.println("You are " + currentRoom.getDescription());
         System.out.print("Exits: ");
-        System.out.println(currentRoom.getRoomExitsString());;
+        System.out.println(currentRoom.getExits());;
         System.out.println();
     }
 
@@ -106,10 +106,10 @@ public class Game {
 
         String direction = command.getSecondWord();
         Room nextRoom = null;
-
-        for (int i = 0; i < currentRoom.getRoomExits().length; i++) {
+        int salidas =4; //numero de salidas que existen para cada cuarto.
+        for (int i = 0; i <salidas; i++) {
             if (direction.equals(locations[i])) {
-                nextRoom = currentRoom.getRoomExits()[i];
+                nextRoom = currentRoom.getSpecificExit(i);
             }
         }
 
@@ -119,7 +119,7 @@ public class Game {
             currentRoom = nextRoom;
             System.out.println("You are " + currentRoom.getDescription());
             System.out.print("Exits: ");
-            System.out.println(currentRoom.getRoomExitsString());
+            System.out.println(currentRoom.getExits());
             System.out.println();
         }
     }
