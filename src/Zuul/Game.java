@@ -20,6 +20,7 @@ public class Game {
 
     private Parser parser;
     private Room currentRoom;
+    private String[] locations = {"north", "east", "south", "west"};
 
     public Game() {
         createRooms();
@@ -37,11 +38,11 @@ public class Game {
         office = new Room("in the computing admin office");
 
         // initialise room exits
-        outside.setExits(null, theatre, lab, pub);
-        theatre.setExits(null, null, null, outside);
-        pub.setExits(null, outside, null, null);
-        lab.setExits(outside, office, null, null);
-        office.setExits(null, null, null, lab);
+        outside.setExits(new Room[]{null, theatre, lab, pub});
+        theatre.setExits(new Room[]{null, null, null, outside});
+        pub.setExits(new Room[]{null, outside, null, null});
+        lab.setExits(new Room[]{outside, office, null, null});
+        office.setExits(new Room[]{null, null, null, lab});
 
         currentRoom = outside;
     }
@@ -66,18 +67,7 @@ public class Game {
         System.out.println();
         System.out.println("You are " + currentRoom.getDescription());
         System.out.print("Exits: ");
-        if (currentRoom.getNorthExit() != null) {
-            System.out.print("north ");
-        }
-        if (currentRoom.getEastExit() != null) {
-            System.out.print("east ");
-        }
-        if (currentRoom.getSouthExit() != null) {
-            System.out.print("south ");
-        }
-        if (currentRoom.getWestExit() != null) {
-            System.out.print("west ");
-        }
+        System.out.println(currentRoom.getRoomExitsString());;
         System.out.println();
     }
 
@@ -87,7 +77,7 @@ public class Game {
             return false;
         }
         String commandWord = command.getCommandWord();
-        
+
         if (commandWord.equals("quit")) {
             return quit(command);
         }
@@ -117,17 +107,10 @@ public class Game {
         String direction = command.getSecondWord();
         Room nextRoom = null;
 
-        if (direction.equals("north")) {
-            nextRoom = currentRoom.getNorthExit();
-        }
-        if (direction.equals("east")) {
-            nextRoom = currentRoom.getEastExit();
-        }
-        if (direction.equals("south")) {
-            nextRoom = currentRoom.getSouthExit();
-        }
-        if (direction.equals("west")) {
-            nextRoom = currentRoom.getWestExit();
+        for (int i = 0; i < currentRoom.getRoomExits().length; i++) {
+            if (direction.equals(locations[i])) {
+                nextRoom = currentRoom.getRoomExits()[i];
+            }
         }
 
         if (nextRoom == null) {
@@ -136,18 +119,7 @@ public class Game {
             currentRoom = nextRoom;
             System.out.println("You are " + currentRoom.getDescription());
             System.out.print("Exits: ");
-            if (currentRoom.getNorthExit() != null) {
-                System.out.print("north ");
-            }
-            if (currentRoom.getEastExit() != null) {
-                System.out.print("east ");
-            }
-            if (currentRoom.getSouthExit() != null) {
-                System.out.print("south ");
-            }
-            if (currentRoom.getWestExit() != null) {
-                System.out.print("west ");
-            }
+            System.out.println(currentRoom.getRoomExitsString());
             System.out.println();
         }
     }
