@@ -20,16 +20,16 @@ package Zuul;
 
 public class Command
 {
-    private String commandWord;
+    private CommandWord commandWord;
     private String secondWord;
 
-    public Command(String firstWord, String secondWord)
+    public Command(CommandWord commandWord, String secondWord)
     {
-        commandWord = firstWord;
+        this.commandWord = commandWord;
         this.secondWord = secondWord;
     }
 
-    public String getCommandWord()
+    public CommandWord getCommandWord()
     {
         return commandWord;
     }
