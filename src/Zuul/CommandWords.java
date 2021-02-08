@@ -39,4 +39,13 @@ public class CommandWords
         }
         return CommandWord.UNKNOWN;
     }
+    
+    public boolean isCommand(String aString)
+    {
+        for(int i = 0; i < validCommands.size(); i++) {
+            if(validCommands.equals(aString))
+                return true;
+        }
+        return false;
+    }
 }
