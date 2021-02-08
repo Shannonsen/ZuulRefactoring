@@ -69,22 +69,24 @@ public class Game {
     }
 
     private boolean processCommand(Command command) {
-        if (command.isUnknown()) {
-            System.out.println("I don't know what you mean...");
-            return false;
-        }
-        String commandWord = command.getCommandWord();
+        boolean quitting = false;
+        CommandWord commandWord = command.getCommandWord();
 
-        if (commandWord.equals("quit")) {
-            return quit(command);
+        switch (commandWord) {
+            case UNKNOWN:
+                System.out.println("I don't know what you mean...");
+                break;
+            case HELP:
+                printHelp();
+                break;
+            case GO:
+                goRoom(command);
+                break;
+            case QUIT:
+                quitting = quit(command);
+                break;
         }
-        if (commandWord.equals("help")) {
-            printHelp();
-        }
-        if (commandWord.equals("go")) {
-            goRoom(command);
-        }
-        return false;
+        return quitting;
     }
 
     private void printHelp() {
