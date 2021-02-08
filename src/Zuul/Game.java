@@ -40,7 +40,7 @@ public class Game {
         // initialise room exits
         outside.setExits(new RoomExit(new Room[]{null, theatre, lab, pub}));
         theatre.setExits(new RoomExit(new Room[]{null, null, null, outside}));
-        pub.setExits(new RoomExit(new Room []{null, outside, null, null}));
+        pub.setExits(new RoomExit(new Room[]{null, outside, null, null}));
         lab.setExits(new RoomExit(new Room[]{outside, office, null, null}));
         office.setExits(new RoomExit(new Room[]{null, null, null, lab}));
 
@@ -65,10 +65,7 @@ public class Game {
         System.out.println("World of Zuul is a new, incredibly boring adventure game.");
         System.out.println("Type 'help' if you need help.");
         System.out.println();
-        System.out.println("You are " + currentRoom.getDescription());
-        System.out.print("Exits: ");
-        System.out.println(currentRoom.getExits());;
-        System.out.println();
+        printLocationInfo();
     }
 
     private boolean processCommand(Command command) {
@@ -106,8 +103,8 @@ public class Game {
 
         String direction = command.getSecondWord();
         Room nextRoom = null;
-        int salidas =4; //numero de salidas que existen para cada cuarto.
-        for (int i = 0; i <salidas; i++) {
+        int salidas = 4; //numero de salidas que existen para cada cuarto.
+        for (int i = 0; i < salidas; i++) {
             if (direction.equals(locations[i])) {
                 nextRoom = currentRoom.getSpecificExit(i);
             }
@@ -117,11 +114,15 @@ public class Game {
             System.out.println("There is no door!");
         } else {
             currentRoom = nextRoom;
-            System.out.println("You are " + currentRoom.getDescription());
-            System.out.print("Exits: ");
-            System.out.println(currentRoom.getExits());
-            System.out.println();
+            printLocationInfo();
         }
+    }
+
+    private void printLocationInfo() {
+        System.out.println("You are " + currentRoom.getDescription());
+        System.out.print("Exits: ");
+        System.out.println(currentRoom.getExits());
+        System.out.println();
     }
 
     /**
