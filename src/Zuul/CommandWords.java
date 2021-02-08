@@ -15,10 +15,6 @@ import java.util.HashMap;
 
 public class CommandWords
 {
-//    // a constant array that holds all valid command words
-//    private static final String[] validCommands = {
-//        "go", "quit", "help"
-//    };
     //Hash map for the command words and it's
     //associated command
     private HashMap<String, CommandWord> validCommands;
