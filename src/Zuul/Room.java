@@ -17,8 +17,6 @@ package Zuul;
 public class Room {
 
     public String description;
-    //private Room[] roomExits;
-    //private String[] locations = {"north ", "east ", "south ", "west "};
     private RoomExit roomExit;
 
     /**
